@@ -67,7 +67,6 @@ extern "C" {
  * RIL_VERSION = 13 : This version includes new wakelock semantics and as the first
  *                    strongly versioned version it enforces structure use.
  */
-
 #define RIL_VERSION 12
 #define LAST_IMPRECISE_RIL_VERSION 12 // Better self-documented name
 #define RIL_VERSION_MIN 6 /* Minimum RIL_VERSION supported */
@@ -5154,6 +5153,22 @@ typedef struct {
 
 /***********************************************************************/
 
+/**
+ * RIL_RESPONSE_ACKNOWLEDGEMENT
+ *
+ * This is used by Asynchronous solicited messages and Unsolicited messages
+ * to acknowledge the receipt of those messages in RIL.java so that the ack
+ * can be used to let ril.cpp to release wakelock.
+ *
+ * Valid errors
+ * SUCCESS
+ * RADIO_NOT_AVAILABLE
+ */
+
+#define RIL_RESPONSE_ACKNOWLEDGEMENT 800
+
+/***********************************************************************/
+
 
 #define RIL_UNSOL_RESPONSE_BASE 1000
 
@@ -5939,6 +5954,13 @@ struct RIL_Env {
 
     void (*RequestTimedCallback) (RIL_TimedCallback callback,
                                    void *param, const struct timeval *relativeTime);
+   /**
+    * "t" is parameter passed in on previous call RIL_Notification routine
+    *
+    * RIL_onRequestAck will be called by vendor when an Async RIL request was received
+    * by them and an ack needs to be sent back to java ril.
+    */
+    void (*OnRequestAck) (RIL_Token t);
 };
 
 
@@ -5994,6 +6016,18 @@ void RIL_register (const RIL_RadioFunctions *callbacks);
  */
 void RIL_onRequestComplete(RIL_Token t, RIL_Errno e,
                            void *response, size_t responselen);
+
+/**
+ * RIL_onRequestAck will be called by vendor when an Async RIL request was received by them and
+ * an ack needs to be sent back to java ril. This doesn't mark the end of the command or it's
+ * results, just that the command was received and will take a while. After sending this Ack
+ * its vendor's responsibility to make sure that AP is up whenever needed while command is
+ * being processed.
+ *
+ * @param t is parameter passed in on previous call to RIL_Notification
+ *          routine.
+ */
+void RIL_onRequestAck(RIL_Token t);
 
 #if defined(ANDROID_MULTI_SIM)
 /**
