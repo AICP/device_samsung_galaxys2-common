@@ -59,7 +59,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES := \
     com.android.future.usb.accessory \
     SamsungServiceMode \
-    Snap
+    Snap \
+    Gello
 
 # Legacy RIL
 PRODUCT_PACKAGES += \
