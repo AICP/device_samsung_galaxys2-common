@@ -58,7 +58,7 @@
 		<device type="wired-headphone">
 			<path type="enable">
 				<ctrl name="Headphone Playback Volume" value="15" />
-				<ctrl name="HP Gain Playback Volume" value="3" />
+				<ctrl name="HP Gain Playback Volume" value="4" />
 				<ctrl name="Headphone Playback Switch" value="on" />
 			</path>
 			<path type="disable">
@@ -70,7 +70,7 @@
 		<device type="wired-headset">
 			<path type="enable">
 				<ctrl name="Headphone Playback Volume" value="15" />
-				<ctrl name="HP Gain Playback Volume" value="3" />
+				<ctrl name="HP Gain Playback Volume" value="4" />
 				<ctrl name="Headphone Playback Switch" value="on" />
 			</path>
 			<path type="disable">
