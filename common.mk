@@ -212,9 +212,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapsize=174m \
     dalvik.vm.heaptargetutilization=0.75 \
     dalvik.vm.heapminfree=2m \
-    dalvik.vm.heapmaxfree=2m
-
-
+    dalvik.vm.heapmaxfree=2m \
+    dalvik.vm.extra-opts=-XX:+DisableExplicitGC
 
 # Include exynos4 platform specific parts
 TARGET_HAL_PATH := hardware/samsung/exynos4/hal
