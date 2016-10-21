@@ -311,14 +311,6 @@ typedef uint32_t GnssMeasurementFlags;
 /** A valid 'carrier phase uncertainty' is stored in the data structure. */
 #define GNSS_MEASUREMENT_HAS_CARRIER_PHASE_UNCERTAINTY         (1<<12)
 
-/**
- * The value of 'pseudorange rate' is uncorrected.
- * This is a mandatory flag. See comments of
- * GpsMeasurement::pseudorange_rate_mps for more details.
- */
-#define GNSS_MEASUREMENT_HAS_UNCORRECTED_PSEUDORANGE_RATE      (1<<18)
-
-
 /* The following typedef together with its constants below are deprecated, and
  * will be removed in the next release. */
 typedef uint8_t GpsLossOfLock;
@@ -530,6 +522,17 @@ typedef uint8_t                         GnssConstellationType;
  */
 #define GNSS_CONFIGURATION_INTERFACE     "gnss_configuration"
 
+/**
+ * The GPS chipset can use Psc for AGPS.
+ */
+#define AGPS_USE_PSC
+
+/**
+ * After renaming GPS to GNSS in Android N GPSCallbacks structs have been changed.
+ * This breaks some GPS blobs (for eg. i9100).
+ */
+#define GPS_LEGACY_CALLBACKS
+
 
 /** Represents a location. */
 typedef struct {
@@ -578,6 +581,14 @@ typedef struct {
     float   elevation;
     /** Azimuth of SV in degrees. */
     float   azimuth;
+    /** Unknown field in Samsung I9100 libgps
+        May be an indicator for constellation type
+        (GPS, GLONASS, Galileo)?
+        Used on GT-I9100, likely also present on GT-N7000,
+        SGH-I717, SGH-I727 but this needs confirmation.
+    */
+    int unknown_samsung_field;
+
 } GpsSvInfo;
 
 typedef struct {
@@ -592,7 +603,7 @@ typedef struct {
      * - GPS:     1-32
      * - SBAS:    120-151, 183-192
      * - GLONASS: 1-24, the orbital slot number (OSN), if known.  Or, if not:
-     *            93-106, the frequency channel number (FCN) (-7 to +6) offset by + 100
+     *            93-106, the fGnssSvInforequency channel number (FCN) (-7 to +6) offset by + 100
      *            i.e. report an FCN of -7 as 93, FCN of 0 as 100, and FCN of +6 as 106.
      * - QZSS:    193-200
      * - Galileo: 1-36
@@ -672,15 +683,15 @@ typedef struct {
      * might rely in the old (wrong) behavior.
      */
     uint16_t lac;
+    /** Cell id in 2G. Utran Cell id in 3G. Cell Global Id EUTRA in LTE. */
+    uint32_t cid;
 #ifdef AGPS_USE_PSC
     uint16_t psc;
 #endif
-    /** Cell id in 2G. Utran Cell id in 3G. Cell Global Id EUTRA in LTE. */
-    uint32_t cid;
     /** Tracking Area Code in LTE. */
-    uint16_t tac;
+//    uint16_t tac;
     /** Physical Cell id in LTE (not used in 2G and 3G) */
-    uint16_t pcid;
+//    uint16_t pcid;
 } AGpsRefLocationCellID;
 
 typedef struct {
@@ -792,9 +803,10 @@ typedef struct {
     gps_release_wakelock release_wakelock_cb;
     gps_create_thread create_thread_cb;
     gps_request_utc_time request_utc_time_cb;
-
+#ifndef GPS_LEGACY_CALLBACKS
     gnss_set_system_info set_system_info_cb;
     gnss_sv_status_callback gnss_sv_status_cb;
+#endif
 } GpsCallbacks;
 
 /** Represents the standard GPS interface. */
@@ -2219,4 +2231,5 @@ typedef struct {
 __END_DECLS
 
 #endif /* ANDROID_INCLUDE_HARDWARE_GPS_H */
+
 

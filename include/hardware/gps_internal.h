@@ -94,3 +94,4 @@ typedef struct {
 __END_DECLS
 
 #endif /* ANDROID_INCLUDE_HARDWARE_GPS_INTERNAL_H */
+
