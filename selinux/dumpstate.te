@@ -1,0 +1,2 @@
+allow dumpstate media_rw_data_file:dir getattr;
+

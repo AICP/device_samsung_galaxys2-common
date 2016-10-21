@@ -1,1 +1,3 @@
 allow bluetooth efs_device_file:dir search;
+allow bluetooth media_rw_data_file:dir create_dir_perms;
+allow bluetooth media_rw_data_file:file create_file_perms;
