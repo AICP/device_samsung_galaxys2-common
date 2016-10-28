@@ -55,6 +55,9 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/gps.conf:system/etc/gps.conf \
     $(COMMON_PATH)/configs/sirfgps.conf:system/etc/sirfgps.conf
 
+PRODUCT_PACKAGES += \
+	gps.smdk4210
+
 # Packages
 PRODUCT_PACKAGES := \
     com.android.future.usb.accessory \
