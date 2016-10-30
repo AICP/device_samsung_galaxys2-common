@@ -21,6 +21,7 @@ system/lib/libfactoryutil.so
 system/lib/libfimc.so
 system/lib/libomission_avoidance.so
 system/lib/libsecnativefeature.so
+system/lib/libshims_thermal.so
 system/vendor/firmware/libpn544_fw.so
 system/vendor/firmware/mfc_fw.bin
 system/vendor/lib/drm/libdrmwvmplugin.so
