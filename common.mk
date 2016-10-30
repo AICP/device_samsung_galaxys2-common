@@ -59,7 +59,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES := \
     com.android.future.usb.accessory \
     SamsungServiceMode \
-    Camera2 \
+    Snap \
     Browser
 
 # Legacy RIL
@@ -95,7 +95,7 @@ PRODUCT_PACKAGES += \
 # Charger
 PRODUCT_PACKAGES += \
     charger \
-    charger_res_images
+#    charger_res_images
 
 # MFC API
 PRODUCT_PACKAGES += \
@@ -172,6 +172,10 @@ PRODUCT_PACKAGES += \
     macloader \
     wpa_supplicant \
     wpa_supplicant.conf
+
+# SamsungDoze
+PRODUCT_PACKAGES += \
+    SamsungDoze
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
