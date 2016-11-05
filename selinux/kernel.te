@@ -1,4 +1,0 @@
-allow kernel system_data_file:file open;
-allow kernel media_rw_data_file:file rw_file_perms;
-allow kernel media_rw_data_file:dir create_dir_perms;
-allow kernel media_rw_data_file:file create_file_perms;

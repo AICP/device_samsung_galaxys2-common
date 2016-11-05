@@ -1,2 +1,0 @@
-allow appdomain sdcardfs:dir create_dir_perms;
-allow appdomain sdcardfs:file create_file_perms;

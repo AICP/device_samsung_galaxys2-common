@@ -1,2 +1,0 @@
-allow property_type tmpfs:file { read };
-
