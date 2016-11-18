@@ -120,6 +120,7 @@ BOARD_MODEM_TYPE := xmm6260
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/galaxys2-common/include/telephony
 BOARD_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 BOARD_RIL_CLASS := ../../../device/samsung/galaxys2-common/ril
+TARGET_NEEDS_GCC_LIBC := true
 
 # Camera
 BOARD_USES_PROPRIETARY_LIBFIMC := true
