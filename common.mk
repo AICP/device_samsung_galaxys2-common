@@ -89,10 +89,6 @@ PRODUCT_PACKAGES += \
     libfimg \
     libsecion
 
-# Thermal
-PRODUCT_PACKAGES += \
-    libshims_thermal
-
 # Charger
 PRODUCT_PACKAGES += \
     charger \

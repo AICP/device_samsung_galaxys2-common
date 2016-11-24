@@ -3,7 +3,6 @@ import init.gps.rc
 
 on init
     export LD_SHIM_LIBS /system/lib/libsecril-shim.so|libshim_ril.so
-    export LD_SHIM_LIBS /system/bin/thermal-engine|libshims_thermal.so
 
     mkdir /efs 0771 radio system
     mkdir /preload 0771 system system
