@@ -65,8 +65,7 @@ PRODUCT_PACKAGES := \
 # Legacy RIL
 PRODUCT_PACKAGES += \
     libshim_ril \
-    libsecril-shim \
-    libsecnativefeature
+    libsecril-shim
 
 # Audio Packages
 PRODUCT_PACKAGES += \
