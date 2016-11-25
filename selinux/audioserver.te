@@ -1,0 +1,5 @@
+r_dir_file(audioserver, sysfs)
+allow audioserver system_data_file:sock_file write;
+
+# Allow rild to connect to gpsd
+unix_socket_connect(audioserver, property, rild)
