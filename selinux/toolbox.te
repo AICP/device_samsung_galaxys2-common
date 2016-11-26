@@ -1,0 +1,11 @@
+allow toolbox system_block_device:blk_file { read open ioctl };
+allow toolbox kernel:process { setsched };
+allow toolbox zygote_exec:file { getattr };
+allow toolbox shell_exec:file { getattr read open };
+allow toolbox init:unix_stream_socket { read write connectto };
+allow toolbox init:fifo_file { write read getattr };
+allow toolbox selinuxfs:file { write };
+allow toolbox self:capability { chown dac_override };
+allow toolbox system_data_file:dir { remove_name };
+allow toolbox property_socket:sock_file { write };
+
