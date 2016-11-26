@@ -3,3 +3,9 @@ allow init tmpfs:lnk_file create;
 allow init rild:process noatsecure;
 allow init debugfs:dir mounton;
 domain_trans(init, rootfs, cpboot-daemon)
+allow init sysfs_display:file { getattr };
+allow init debugfs:file { getattr };
+allow init unlabeled:dir { mounton };
+allow init servicemanager:binder { call };
+allow init devpts:chr_file { getattr ioctl };
+

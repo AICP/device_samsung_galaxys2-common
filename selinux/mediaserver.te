@@ -2,4 +2,3 @@ allow mediaserver mfc_device:chr_file rw_file_perms;
 allow mediaserver media_rw_data_file:file write;
 allow mediaserver audio_device:chr_file { ioctl open read write };
 allow mediaserver camera_device:chr_file { read write open getattr ioctl };
-
