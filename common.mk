@@ -67,6 +67,10 @@ PRODUCT_PACKAGES += \
     libshim_ril \
     libsecril-shim
 
+# Legacy GPS
+PRODUCT_PACKAGES += \
+    gps.smdk4210
+
 # Audio Packages
 PRODUCT_PACKAGES += \
     AdvancedDisplay \
@@ -139,10 +143,6 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     resize2fs_static \
     setup_fs
-
-# Storage
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sys.sdcardfs=true
 
 # F2FS Filesystem
 PRODUCT_PACKAGES += \
