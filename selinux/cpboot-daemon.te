@@ -1,6 +1,12 @@
 type cpboot-daemon, domain;
+type cpboot-daemon_exec, exec_type, file_type;
 
 permissive cpboot-daemon;
+
+net_domain(cpboot-daemon)
+init_daemon_domain(cpboot-daemon)
+wakelock_use(cpboot-daemon)
+unix_socket_connect(cpboot-daemon, property, init)
 
 allow cpboot-daemon cgroup:dir { create add_name };
 allow cpboot-daemon cgroup:file read;
@@ -9,13 +15,18 @@ allow cpboot-daemon device:chr_file { create unlink };
 allow cpboot-daemon efs_block_device:blk_file { read open };
 allow cpboot-daemon efs_device_file:dir search;
 allow cpboot-daemon efs_file:file { read write open };
+allow cpboot-daemon efs_file:dir r_dir_perms;
 allow cpboot-daemon init:unix_stream_socket connectto;
 allow cpboot-daemon log_device:chr_file { write open };
 allow cpboot-daemon log_device:dir search;
 allow cpboot-daemon proc:file { open read };
 allow cpboot-daemon property_socket:sock_file write;
 allow cpboot-daemon radio_device:chr_file { read write ioctl open };
-allow cpboot-daemon radio_prop:property_service set;
 allow cpboot-daemon self:capability { setuid };
 allow cpboot-daemon sysfs_radio:file { read write open };
 allow cpboot-daemon usbfs:dir search;
+
+# set properties on boot
+set_prop(cpboot-daemon, radio_prop)
+set_prop(cpboot-daemon, system_prop)
+
