@@ -59,7 +59,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES := \
     com.android.future.usb.accessory \
     SamsungServiceMode \
-    Snap \
     Browser
 
 # Legacy RIL
