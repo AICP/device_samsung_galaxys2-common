@@ -33,7 +33,7 @@ include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES:= \
 	secril-shim.c
-	
+
 LOCAL_MODULE:= libsecril-shim
 LOCAL_SHARED_LIBRARIES := liblog libbinder
 
