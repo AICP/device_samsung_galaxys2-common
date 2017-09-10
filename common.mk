@@ -63,12 +63,26 @@ PRODUCT_PACKAGES += \
     libsecril-shim
 
 # Legacy GPS
-PRODUCT_PACKAGES += \
-    gps.smdk4210
+#PRODUCT_PACKAGES += \
+#    gps.smdk4210
 
 # SamsungPowerHAL
 PRODUCT_PACKAGES += \
     power.smdk4210
+
+# HIDL
+PRODUCT_COPY_FILES += \
+    device/samsung/galaxys2-common/manifest.xml:system/vendor/manifest.xml
+
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.sensors@1.0-impl \
+    android.hardware.power@1.0-impl \
+    android.hardware.light@2.0-impl
 
 # Audio Packages
 PRODUCT_PACKAGES += \
@@ -215,6 +229,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapminfree=2m \
     dalvik.vm.heapmaxfree=2m
 
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 # Include exynos4 platform specific parts
 TARGET_HAL_PATH := hardware/samsung/exynos4/hal
 TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax
