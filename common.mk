@@ -66,6 +66,10 @@ PRODUCT_PACKAGES += \
 #PRODUCT_PACKAGES += \
 #    gps.smdk4210
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    libbt-vendor
+
 # SamsungPowerHAL
 PRODUCT_PACKAGES += \
     power.smdk4210
@@ -82,7 +86,8 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.sensors@1.0-impl \
     android.hardware.power@1.0-impl \
-    android.hardware.light@2.0-impl
+    android.hardware.light@2.0-impl \
+    android.hardware.bluetooth@1.0-impl
 
 # Audio Packages
 PRODUCT_PACKAGES += \
