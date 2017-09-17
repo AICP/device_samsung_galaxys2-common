@@ -52,9 +52,6 @@ TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 # AAPT
 TARGET_WANTS_AAPT_COMPRESS := true
 
-# Enable real time lockscreen charging current values
-BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
-
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
 
@@ -111,9 +108,7 @@ BOARD_USE_TINYALSA_AUDIO := true
 BOARD_USE_YAMAHA_MC1N2_AUDIO := true
 
 # RIL
-#BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := xmm6260
-#BOARD_RIL_CLASS := ../../../device/samsung/galaxys2-common/ril
 BOARD_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 
 # Camera
@@ -138,9 +133,6 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_SAMSUNG_BLUETOOTH := true
 BOARD_CUSTOM_BT_CONFIG := device/samsung/galaxys2-common/bluetooth/vnd_smdk4210.txt
 
-# Selinux
-#BOARD_SEPOLICY_DIRS += device/samsung/galaxys2-common/selinux
-
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/galaxys2-common/recovery/recovery_keys.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/galaxys2-common/recovery/graphics.c
@@ -155,10 +147,10 @@ TARGET_RECOVERY_DENSITY := mdpi
 RECOVERY_FSTAB_VERSION := 2
 
 # HIDL
-#DEVICE_MANIFEST_FILE := device/samsung/galaxys2-common/manifest.xml
+DEVICE_MANIFEST_FILE := device/samsung/galaxys2-common/manifest.xml
 
 # Device specific headers
-#TARGET_SPECIFIC_HEADER_PATH := device/samsung/galaxys2-common/include
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/galaxys2-common/include
 
 # Charging mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
